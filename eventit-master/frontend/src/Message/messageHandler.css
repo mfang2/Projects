@@ -1,0 +1,21 @@
+.clsErr {
+    color: red;
+    background: rgb(255, 243, 243);
+    padding: 0.3rem 40%;
+    z-index: 3;
+}
+
+.clsSuccess {
+    color: green;
+    background: rgb(218, 255, 197);
+    padding: auto 40%;
+    z-index: 3;
+
+}
+
+.clsNoMessage {
+    display: none;
+}
+.clsErrCont{
+    z-index: 5;
+}

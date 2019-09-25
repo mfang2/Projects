@@ -1,0 +1,39 @@
+.clsCreateform{
+  margin: auto;
+  padding-bottom: 12px;
+}
+
+.clsTextField {
+  max-width: 20rem;
+  height: 36px;
+  border-radius: 18px;
+  padding-left: 8px;
+}
+
+.clsTextFieldLabel {
+  width: 10rem;
+  font-weight: bold;
+}
+
+.clsButton {
+  width: 20%;
+  margin-left: 40%;
+  height: 30px;
+  margin-bottom: 8px;
+  border-radius: 15px;
+}
+
+.addEventCard {
+  background-color: rgb(16, 29, 48);
+  color: white;
+}
+.clsSuggestionItem {
+  color: #ffffff;
+}
+
+.clsSuggestionItem-active {
+  background:  #414c5a;
+  color: #ffffff;
+  line-height: 2rem;
+  font-size:1.2rem;
+}

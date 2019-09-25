@@ -1,0 +1,170 @@
+.App{
+  height: fill-available;
+  
+}
+.Appbody{
+  padding-top: 4rem;
+}
+.text-input {
+  height: 24px;
+  min-width: 300px;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.button {
+  margin-top: 20px;
+  width: 80px;
+  font-size: 20px;
+  height: 40px;
+}
+
+.account-form {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.signin-block {
+  display: flex;
+  flex-direction: column;
+  margin: 40px;
+}
+.clsContent{
+  position: relative;
+}
+.clsBGFooter{
+  background: #2f3640;
+  bottom: 0px!important;
+  /* position: fixed; */
+  width: 100%;
+}
+.card {
+  margin: 15% 20%;
+  box-shadow: 1px 0px 5px white;
+  width: 50%;
+  padding: 2rem;
+  opacity: 1;
+  border-radius: 3rem!important;
+  background: linear-gradient(to right,rgba(77, 253, 224, 0.473),rgba(118, 239, 255, 0.527),rgb(255, 255, 184)) ,white;
+} 
+
+
+/* ============================================================================================================================================== */
+.Demo__map-maker-icon {
+  color: #FD6C6C;
+}
+
+.Demo__github-icon {
+  font-size: 24px;
+}
+
+.Demo__github-link {
+  color: #262626;
+  font-size: 20px;
+}
+
+.Demo__github-link:hover,
+.Demo__github-link:active {
+  color: #4078c0;
+  text-decoration: none;
+}
+
+.Demo__suggestion-icon {
+  margin-right: 8px;
+}
+
+.Demo__search-bar-container {
+  width: 90%;
+  max-width: 500px;
+  margin: 40px auto 0;
+}
+
+.Demo__search-input-container {
+  position: relative;
+}
+
+.Demo__search-input,
+.Demo__search-input:focus,
+.Demo__search-input:active {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  border: honeydew;
+  display: block;
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 2px;
+  outline: none;
+}
+
+.Demo__clear-button,
+.Demo__clear-button:active,
+.Demo__clear-button:focus {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  color: #999;
+}
+
+.Demo__autocomplete-container {
+  border-bottom: honeydew;
+  border-left: honeydew;
+  border-right: honeydew;
+  border-top: 1px solid #e6e6e6;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  border-radius: 0 0 2px 2px;
+}
+
+.Demo__suggestion-item {
+  padding: 8px;
+  text-align: left;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.Demo__suggestion-item--active {
+  background-color: #fafafa;
+}
+
+.Demo__dropdown-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 4px;
+}
+
+.Demo__dropdown-footer-image {
+  display: inline-block;
+  width: 150px;
+}
+
+.Demo__spinner {
+  color: #18bc9c;
+  font-size: 30px;
+}
+
+.Demo__error-message {
+  color: red;
+}
+
+.Demo__geocode-result-header {
+  font-size: 20px;
+  color: #222222;
+}
+
+.addEventCard {
+  margin: 5% 20%;
+  box-shadow: 1px 0px 5px white;
+  width: 50%;
+  padding: 2rem;
+  opacity: 1;
+  border-radius: 3rem!important;
+  background-color: white;
+}
+
+.globalContainer{
+  padding-top:1rem;
+}

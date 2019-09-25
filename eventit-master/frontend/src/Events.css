@@ -1,0 +1,105 @@
+.eventCard {
+    /* Add shadows to create the "card" effect */
+
+    display: inline-flex;
+    padding: 1rem;
+}
+
+/* On mouse-over, add a deeper shadow */
+
+
+/* Add some padding inside the card container */
+.eventCardContainer {
+    padding: 0.1rem 1rem;
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+}
+
+.clsCardLogo {
+    width: 100%;
+}
+
+.eventLink {
+    text-decoration: none;
+    width: 100%;
+}
+
+.eventCardContainer:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+.clsCreateButtonContainer {
+    margin: 1.5rem 40%;
+}
+
+.clsCreateButton {
+    background: transparent;
+    width: 100%;
+    border: 2px solid #014556;
+    border-radius: 1rem;
+    outline: none;
+    transition: 0.3s;
+    /* margin-top: 5rem; */
+}
+
+.clsCreateButton:hover,
+.clsCreateButton:focus {
+    background: #014556;
+    width: 100%;
+    outline: none;
+    color: white;
+    box-shadow: 0px 0px 3px #014556;
+}
+
+.clsEventContainer {
+    padding: 1rem;
+    flex: 1;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.clsEventDesc {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #494646;
+    font-size: 0.8rem;
+}
+
+.clsEventDate {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #494646;
+}
+
+.clsEventTime {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #494646;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.clsEventLoc {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #494646;
+}
+
+.clsEventHeading {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-transform: capitalize;
+}

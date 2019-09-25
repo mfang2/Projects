@@ -1,0 +1,98 @@
+.clsToolbar {
+    position: fixed;
+    width: 100%;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0), rgb(1, 100, 124)30%);
+    z-index: 2;
+    height: 4rem;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.clsToolbarNavigation {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 5rem;
+}
+
+.clsToolbarLogo {
+    margin-left: 1rem;
+}
+
+.clsToolbarLogo a {
+    color: rgb(255, 255, 255)
+}
+
+.clsToolbarNavigationItems a {
+    color: white;
+    text-decoration: none;
+
+}
+
+.clsToolbarNavigationItems ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+}
+
+.clsToolbarNavigationItems li {
+
+    padding: 0px 0.5rem;
+
+}
+
+.clsToolbarNavigationItems a:hover,
+.clsToolbarNavigationItems a:active {
+    color: orange;
+
+}
+
+.clsToolbarSearchContainer {
+    display: inline-flex;
+}
+
+.clsToolbarSearchInner {
+    border-radius: 1rem 0rem 0rem 1rem;
+
+}
+
+.clsToolbarSearchBtn {
+    border-radius: 0rem 1rem 1rem 0rem;
+    border: none;
+    padding:0.4rem;
+    width:2rem;
+    
+}
+
+.clsToolbarSearchInput {
+    border-radius: 1rem 0rem 0rem 1rem;
+    border: none;
+    padding:0.4rem;
+
+}
+.clsLogo{
+    max-width: 8rem;
+    filter: invert(100%);
+}
+@media (max-width:786px) {
+    .clsToolbarNavigationItems {
+        display: none;
+    }
+
+    .clsToolbarSearchContainer {
+        display: none;
+    }
+}
+
+@media (min-width:787px) {
+    .clsToolbarToggleButton {
+        display: none;
+    }
+
+    .clsToolbarLogo {
+        margin-left: 0%;
+    }
+}
