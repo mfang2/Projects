@@ -1,0 +1,303 @@
+directive sample 28.0e+3 1000
+directive plot STAT1c();SOCS1();mRNAc();STAT1nstar_STAT1nstar()
+directive graph
+
+
+(*According to the paper, section 4, First and second order rate constants are expressed in units  *
+ * of second^(-1) and nM^(-1) second^(-1)*)
+
+
+(*cr = each chanel rate value
+  kd = delay rate value *)
+val mole   = 6.0e+23  (* molecules *)
+
+val cr01 = 0.01 (*0.1*0.1*)                      
+val cr02 = 0.002 (*0.02*0.1*)                     
+val cr03 = 0.004 (*0.04*0.1*)                     
+val k4 = 0.005     
+val cr05 = 0.0008 (*0.008*0.1*)                    
+val k6 = 0.4
+val cr07 = 0.0005 (*0.005*0.1*)                    
+val cr08 = 0.002 (*0.02*0.1*)                     
+val cr09 = 0.0001(*0.001*0.1*)                    
+val k10 = 0.003
+val cr11 = 0.0001 (*0.001*0.1*)                    
+val k12 = 0.003
+val cr13 = 0.0001 (*0.001*0.1*)                    
+val k14 = 0.003
+val cr15 = 0.00000002 (*2.0e-7*0.1*)                  
+val k16 = 0.005
+val cr17 = 0.002 (*0.02*0.1*)                     
+val cr18 = 0.0001 (*0.001*0.1*)                    
+val k19 = 0.005
+val cr20 = 0.0001 (*0.001*0.1*)                    
+val k21 = 0.005     
+val cr22 = 0.00000002 (*2.0e-7*0.1*)                   
+val k23 = 0.05     
+val k24 = 2.5e-5
+val k25 = 0.001
+val k26 = 0.01
+val cr27 = 0.002 (*0.02*0.1*)                     
+val k28 = 5.0e-4
+val k29 = 5.0e-4
+val cr30 = 0.0008 (* 0.008*0.1*)                    
+val cr31 = 0.0001 (*0.001*0.1*)                    
+val k32 = 0.003
+val k33 = 5.0e-4
+val cr34 = 0.0001 (*0.001*0.1*)                      
+val cr35 = 0.0008 (*0.008*0.1*)                    
+val cr36 = 0.0001 (*0.001*0.1*)                     
+val k37 = 0.0030
+val k38 = 5.0e-4
+val k39 = 5.0e-4
+val k40 = 0.0030
+val k41 = 5.0e-4
+val cr42 = 0.002 (*0.02*0.1*)                      
+val cr43 = 0.002 (*0.02*0.1*)                      
+val cr44 = 0.002 (*0.02*0.1*)                      
+val cr45 = 0.002 (*0.02*0.1*)                      
+val cr46 = 0.01 (*0.1*0.1*)                       
+
+
+val kd1 = 0.05
+val kd2 = 0.01 (*0.02/2*)
+val kd3 = 0.2
+val kd5 = 0.8
+val kd7 = 0.5
+val kd8 = 0.1
+val kd9 = 0.2
+val kd11 = 0.2
+val kd13 = 0.2
+val kd15 = 0.2
+val kd17 = 0.1
+val kd18 = 0.2
+val kd20 = 0.2
+val kd22 = 0.2
+val kd27 = 0.1
+val kd30 = 0.8
+val kd31 = 0.2
+val kd34 = 0.2
+val kd35 = 0.8
+val kd36 = 0.2
+val kd42 = 0.1
+val kd43 = 0.1
+val kd44 = 0.1
+val kd45 = 0.02
+val kd46 = 0.05
+
+(* chanels *)
+new k1@cr01:chan
+new k2@cr02:chan
+new k3@cr03:chan
+new k5@cr05:chan
+new k7@cr07:chan
+new k8@cr08:chan
+new k9@cr09:chan
+new k11@cr11:chan
+new k13@cr13:chan
+new k15@cr15:chan
+new k17@cr17:chan
+new k18@cr18:chan
+new k20@cr20:chan
+new k22@cr22:chan
+new k27@cr27:chan
+new k30@cr30:chan
+new k31@cr31:chan
+new k34@cr34:chan
+new k35@cr35:chan
+new k36@cr36:chan
+new k42@cr42:chan
+new k43@cr43:chan
+new k44@cr44:chan
+new k45@cr45:chan
+new k46@cr46:chan
+
+
+
+(*1*)
+let JAK() = do !k1;()
+            or !k46;() (*46*)
+and R() = do ?k1;RJ()
+          or !k45;() (*45*)
+and RJ() = do delay@kd1;(JAK()|R())
+
+(*2*) 
+           or ?k2;IFNRJ()
+and IFN() = do !k2;()
+            or ?k45; IFNR() (*45*)
+and IFNRJ() = do delay@kd2;(IFN()|RJ())
+
+(*3*)
+              or !k3;()
+              or ?k3;IFNRJ2()
+              or delay@kd46;(IFNR()|JAK())
+and IFNRJ2() = do delay@kd3;(IFNRJ()|IFNRJ())
+
+(*4*)
+               or delay@k4;IFNRJ2star()
+
+(*5*)
+and STAT1c() = do !k5;()
+               or ?k15; STAT1c_STAT1cstar() (*15*)
+               or !k30;()
+               or !k35;()
+and IFNRJ2star() = do ?k5; IFNRJ2star_STAT1c()
+                   or ?k7; ()(*7*)
+                   or ?k9; ()(*9*)
+                   or ?k27; IFNRJ2star_SOCS1()  (*27*)
+   
+and IFNRJ2star_STAT1c() = do delay@kd5;(STAT1c()|IFNRJ2star())
+
+(*6*)
+                          or delay@k6;(IFNRJ2star()|STAT1cstar())
+                          or ?k36;IFNRJ2star_SHP2_STAT1c()  (*36*)
+                          or ?k42;IFNRJ2star_SOCS1_STAT1c()  (*42*)
+
+(*7*)
+and STAT1cstar() = do !k7;IFNRJ2star_STAT1cstar()
+
+(*8*)
+                   or !k8;()
+                   or ?k8;STAT1cstar_STAT1cstar()
+                   or !k11;() (*11*)
+                   or !k15;() (*15*)
+and STAT1cstar_STAT1cstar() = do delay@kd8;(STAT1cstar()|STAT1cstar())
+                              or !k13;()(*13*)
+(*16*)
+                              or delay@k16;STAT1nstar_STAT1nstar() 
+                    
+and IFNRJ2star_STAT1cstar() = delay@kd7;(STAT1cstar()|IFNRJ2star())(*7*)
+
+(*9*)
+and SHP2() = do !k9;IFNRJ2star_SHP2() 
+             or !k31;() (*31*)
+             or !k34;() (*34*)
+             or !k36;() (*36*)
+and IFNRJ2star_SHP2() = do delay@kd9;(SHP2()|IFNRJ2star())
+
+(*10*)
+                        or delay@k10;(SHP2()|IFNRJ2())
+                        or ?k43;IFNRJ2star_SHP2_SOCS1()  (*43*)
+(*11*)
+and PPX() = do ?k11;PPX_STAT1cstar()
+            or ?k13;PPX_STAT1cstar_STAT1cstar() (*13*)
+
+and PPX_STAT1cstar() = do delay@kd11;(STAT1cstar()|PPX())
+(*12*)
+                       or delay@k12;(STAT1c()|PPX())
+(*13*)
+and PPX_STAT1cstar_STAT1cstar() = do delay@kd13;(PPX()|STAT1cstar_STAT1cstar())
+(*14*)
+                                  or delay@k14;(PPX()|STAT1c_STAT1cstar())
+(*15*)
+and STAT1c_STAT1cstar() = delay@kd15;(STAT1c()|STAT1cstar())
+
+(*17*)
+and STAT1nstar() = do ?k17;() 
+                   or !k17;STAT1nstar_STAT1nstar()
+                   or !k18;()  (*18*)
+                   or !k22;()   (*22*)
+and STAT1nstar_STAT1nstar() = do delay@kd17; (STAT1nstar()|STAT1nstar())
+                              or !k20;() (*20*)
+                              or delay@k24; (STAT1nstar_STAT1nstar()|mRNAn())
+(*18*)
+and PPN() = do ?k18;PPN_STAT1nstar()
+            or ?k20;PPN_STAT1nstar_STAT1nstar()  (*20*)
+(*19*)
+and PPN_STAT1nstar() = do delay@kd18;(PPN()|STAT1nstar())
+                       or delay@k19;(PPN()|STAT1n())
+
+(*20*)
+and PPN_STAT1nstar_STAT1nstar() = do delay@kd20;(STAT1nstar_STAT1nstar()|PPN())
+                                  or delay@k21;(PPN()|STAT1n_STAT1nstar()) (*21*)
+
+(*22*)
+and STAT1n() = do ?k22;STAT1n_STAT1nstar()
+(*23*)
+               or delay@k23;STAT1c()
+
+and STAT1n_STAT1nstar() = delay@kd22;(STAT1n()|STAT1nstar())
+
+(*25*)
+and mRNAn() = delay@k25;mRNAc()
+              
+    
+(*26*)
+and mRNAc() = do delay@k26;(SOCS1()|mRNAc())
+(*28*)
+              or delay@k28;() 
+(*27*)
+and SOCS1() = do !k27;()
+              or !k42;() (*42*)
+              or !k43;() (*43*)
+              or !k44;() (*44*)
+(*29*)
+              or delay@k29;()
+and IFNRJ2star_SOCS1() = do delay@kd27;(IFNRJ2star()|SOCS1())
+(*30*)
+                         or ?k30;IFNRJ2star_SOCS1_STAT1c()
+                         or ?k34;IFNRJ2star_SHP2_SOCS1() (*34*)
+(*41*)
+                         or delay@k41;IFNRJ2star()
+and IFNRJ2star_SOCS1_STAT1c() = do delay@kd30;(IFNRJ2star_SOCS1 ()|STAT1c())  
+(*31*)
+                                or ?k31;IFNRJ2star_SHP2_SOCS1_STAT1c()
+(*38*)
+                                or delay@k38;IFNRJ2star_STAT1c() 
+(*42*)                  
+                                or delay@kd42;(IFNRJ2star_STAT1c()|SOCS1())
+and IFNRJ2star_SHP2_SOCS1_STAT1c() = do delay@kd31;(IFNRJ2star_SOCS1_STAT1c()|SHP2())
+(*32*)
+                                     or delay@k32;(IFNRJ2()|SOCS1()|STAT1c()|SHP2())
+(*33*)
+                                     or delay@k33;IFNRJ2star_SHP2_STAT1c()
+
+                                     or delay@kd35;(IFNRJ2star_SHP2_SOCS1()|STAT1c()) (*35*)
+                                     or delay@kd44;(IFNRJ2star_SHP2_STAT1c()|SOCS1()) (*44*)
+(*34*)
+and IFNRJ2star_SHP2_SOCS1() = do delay@kd34;(IFNRJ2star_SOCS1()|SHP2())
+(*35*) 
+                              or ?k35;IFNRJ2star_SHP2_SOCS1_STAT1c()
+(*39*)
+                              or delay@k39;IFNRJ2star_SHP2()
+(*40*)
+                              or delay@k40;(IFNRJ2()|SHP2()|SOCS1())
+(*43*)
+                              or delay@kd43;(IFNRJ2star_SHP2()|SOCS1())
+(*36*)
+and IFNRJ2star_SHP2_STAT1c() = do delay@kd36;(IFNRJ2star_STAT1c()|SHP2())
+(*37*)
+                               or delay@k37;(IFNRJ2()|SHP2()|STAT1c())
+(*44*)
+                               or ?k44;IFNRJ2star_SHP2_SOCS1_STAT1c()
+(*45*)
+and IFNR() = do delay@kd45;(IFN()|R())
+(*46*)
+             or ?k46;IFNRJ() (*46*)
+
+
+(*Accoridng to paper, each of the element initial value should times 10*)
+run 100 of R()
+run 100 of JAK()
+run 100 of IFN()
+run 10000 of STAT1c()
+run 1000 of SHP2()
+run 500 of PPX()
+run 600 of PPN()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

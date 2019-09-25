@@ -1,0 +1,13 @@
+Characters sorted with frequency(weight) 
+ch = l wt = 33.3%
+ch = o wt = 16.6%
+ch = e wt = 16.6%
+ch = h wt = 16.6%
+ch = H wt = 16.6%
+Characters and Huffman coding listed by frequency: 
+key = l Huffman coding = 0
+key = o Huffman coding = 111
+key = e Huffman coding = 110
+key = h Huffman coding = 101
+key = H Huffman coding = 100
+the length of the coded message in bits is: 14

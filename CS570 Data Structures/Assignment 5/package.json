@@ -1,0 +1,23 @@
+{
+  "name": "assign5.js",
+  "version": "1.0.0",
+  "main": "assign5.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node assign5.js"
+  },
+  "author": "Michael Fang",
+  "license": "MIT",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "path": "^0.12.7",
+    "readline-sync": "^1.4.9"
+  },
+  "devDependencies": {
+    "@types/node": "^10.9.4"
+  },
+  "description": "Assignment 5: Link State Routing",
+  "keywords": [
+    "Link State Routing"
+  ]
+}

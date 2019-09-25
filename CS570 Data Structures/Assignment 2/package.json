@@ -1,0 +1,23 @@
+{
+  "name": "cs570b_assignment_2",
+  "version": "1.0.0",
+  "main": "p2.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "p2.js"
+  },
+  "author": "Michael Fang",
+  "license": "MIT",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "path": "^0.12.7",
+    "readline-sync": "^1.4.9"
+  },
+  "devDependencies": {
+    "@types/node": "^10.9.4"
+  },
+  "description": "Assignment 2: Reverse Polish Notation Calculator",
+  "keywords": [
+    "Reverse Polish Notation Calculator"
+  ]
+}

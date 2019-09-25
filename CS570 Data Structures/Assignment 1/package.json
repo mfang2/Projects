@@ -1,0 +1,23 @@
+{
+  "name": "cs570b_tic_tac_toe",
+  "version": "1.0.0",
+  "main": "t5.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "t5.js"
+  },
+  "author": "Michael Fang",
+  "license": "MIT",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "path": "^0.12.7",
+    "readline-sync": "^1.4.9"
+  },
+  "devDependencies": {
+    "@types/node": "^10.9.4"
+  },
+  "description": "Assignment 1: Tic-Tac-Toe",
+  "keywords": [
+    "Tic Tac Toe"
+  ]
+}

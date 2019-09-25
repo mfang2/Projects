@@ -1,0 +1,59 @@
+directive sample 600.0
+directive plot RL(); G(); Ga ()
+
+new k1@2000000.0:chan
+new k1r@0.01:chan
+new k2@1.0:chan
+new k3@0.00001:chan
+new k4@0.0004:chan
+new k4s@4.0:chan
+new k5@0.004:chan
+new k6@0.11:chan
+
+(* r1 *)
+(* L + R <-> RL *)
+(* KRL = 2x10^6/Ms, KRLm = 10^-2/s *)
+
+let L() = ?k1; ()
+and R() = do !k1; RL()
+          or ?k4; nullR()
+
+and RL() = do delay@0.01; (L()|R())
+           or !k3; (Ga()|Gbg()|RL())
+           or delay@0.004;nullRL()
+
+(* r2 *)
+(* Gd + Gbg -> G *)
+(* Kg1 = 1/s*)
+
+and Gd() = ?k2; ()
+and Gbg() = !k2; G()
+
+(* r3 *)
+(* RL + G -> Ga + Gbg + RL *)
+(* KGa = 10^-5/s *)
+
+and G() = ?k3; ()
+
+(* r4 *)
+(*R <-> null *) 
+(*Krd0 = 4x10^-4/s, KRs = 4/s *)
+
+and nullR() = !k4s; R() (* nullR is the non-synthesized Receptor components *)
+
+
+(* r5 *)
+(* release of ligand from receptor *)
+(*RL -> null *) 
+(*KRd1 = 4x10^-3/s *)
+
+and nullRL() = ()
+
+
+(* r6 *)
+(* Ga -> Gd *)
+(* KGd = 0.11/s *)
+
+and Ga() = delay@0.11; Gd()
+
+run (602200 of L() |10000 of R() | 7000 of G() | 3000 of Gd() | 3000 of Gbg())
